@@ -16,7 +16,7 @@ credentials = json.loads(conteudo)
 service_account = gspread.service_account_from_dict(credentials)
 amazonia = ['AC', 'AM', 'AP','MA','PA','MT','RR','RO','TO']
 
-def get_multas_amazonia_legal():
+def get_multas():
     ssl._create_default_https_context = ssl._create_unverified_context
     UF = input("Digite a sigla da unidade de federação: ")
     UF = UF.upper()
@@ -48,7 +48,7 @@ def sobre():
 
 @app.route("/multas")
 def multas():
-    UF = get_multas_amazonia_legal()
+    UF = get_multas()
     if UF = "AC":
         arquivo = open("templates/multasac.html")
     elif UF = "AM":
