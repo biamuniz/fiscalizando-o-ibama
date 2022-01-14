@@ -1,24 +1,21 @@
 import base64
 import json
 import os
+import pandas as pd
 import ssl
 
-import pandas as pd
-import requests
-
-from flask import Flask, render_template
 import gspread
-
+import requests
+from flask import Flask, render_template
 
 app = Flask(__name__)
-
 spreadsheet_id = os.environ["SPREADSHEET_ID"]
 conteudo_codificado = os.environ["GOOGLE_SHEETS_CREDENTIALS"]
 conteudo = base64.b64decode(conteudo_codificado)
 credentials = json.loads(conteudo)
 service_account = gspread.service_account_from_dict(credentials)
-
 amazonia = ['AC', 'AM', 'AP','MA','PA','MT','RR','RO','TO']
+
 def get_multas_amazonia_legal():
     ssl._create_default_https_context = ssl._create_unverified_context
     UF = input("Digite a sigla da unidade de federação: ")
