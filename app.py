@@ -30,17 +30,50 @@ def sobre():
 
 @app.route("/multas")
 def multas():
-    return """
-    <h1>Veja as multas em homologação/prazo de defesa em cada estado da Amazônia Legal</h1>
-    <a href="/ac">Acre</a>
-    <a href="/am">Amazonas</a>
-    <a href="/ap">Amapá</a>
-    <a href="/ma">Maranhão</a>
-    <a href="/mt">Mato Grosso</a>
-    <a href="/pa">Pará</a>
-    <a href="/ro">Rondônia</a>
-    <a href="/rr">Roraima</a>
-    <a href="/to">Tocantins</a>
-    """"
+    arquivo = open("templates/multas.html")
+    return arquivo.read()
 
+@app.route("/ac")
+def ac():
+    arquivo = open("templates/multasac.html")
+    return arquivo.read()
 
+@app.route("/am")
+def am():
+    arquivo = open("templates/multasam.html")
+    return arquivo.read()
+
+@app.route("/ap")
+def ap():
+    arquivo = open("templates/multasap.html")
+    return arquivo.read()
+
+@app.route("/ma")
+def ma():
+    arquivo = open("templates/multasma.html")
+    return arquivo.read()
+
+@app.route("/mt")
+def mt():
+    arquivo = open("templates/multasmt.html")
+    return arquivo.read()
+
+@app.route("/pa")
+def pa():
+    arquivo = open("templates/multaspa.html")
+    return arquivo.read()
+
+@app.route("/ro")
+def ro():
+    arquivo = open("templates/multasro.html")
+    return arquivo.read()
+
+@app.route("/rr")
+def rr():
+    arquivo = open("templates/multasrr.html")
+    return arquivo.read()
+
+@app.route("/to")
+def to():
+    arquivo = open("templates/multasto.html")
+    return arquivo.read()
