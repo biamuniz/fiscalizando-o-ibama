@@ -13,7 +13,7 @@ credentials = json.loads(conteudo)
 service_account = gspread.service_account_from_dict(credentials)
 amazonia = ['AC', 'AM', 'AP','MA','PA','MT','RR','RO','TO']
 
-def get_multas():
+def get_multas_amazonia():
     ssl._create_default_https_context = ssl._create_unverified_context
     UF = input("Digite a sigla da unidade de federação: ")
     UF = UF.upper()
