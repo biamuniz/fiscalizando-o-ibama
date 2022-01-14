@@ -30,26 +30,17 @@ def sobre():
 
 @app.route("/multas")
 def multas():
-    UF = get_multas_amazonia()
-    if UF = "AC":
-        arquivo = open("templates/multasac.html")
-    elif UF = "AM":
-        arquivo = open("templates/multasam.html")
-    elif UF = "AP":
-        arquivo = open("templates/multasap.html")
-    elif UF = "MA":
-        arquivo = open("templates/multasma.html")
-    elif UF = "MT":
-        arquivo = open("templates/multasmt.html")
-    elif UF = "PA":
-        arquivo = open("templates/multaspa.html")
-    elif UF = "RO":
-        arquivo = open("templates/multasro.html")
-    elif UF = "RR":
-        arquivo = open("templates/multasrr.html")
-    elif UF = "TO":
-        arquivo = open("templates/multasto.html")
-    else:
-        arquivo = open("templates/erro.html")
-    return arquivo.read()
+    return """
+    <h1>Veja as multas em homologação/prazo de defesa em cada estado da Amazônia Legal</h1>
+    <a href="/ac">Acre</a>
+    <a href="/am">Amazonas</a>
+    <a href="/ap">Amapá</a>
+    <a href="/ma">Maranhão</a>
+    <a href="/mt">Mato Grosso</a>
+    <a href="/pa">Pará</a>
+    <a href="/ro">Rondônia</a>
+    <a href="/rr">Roraima</a>
+    <a href="/to">Tocantins</a>
+    """"
+
 
