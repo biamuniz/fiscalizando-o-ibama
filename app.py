@@ -22,24 +22,11 @@ def sobre():
         </p>
             """
 
-@app.route("/amazonia")
+@app.route("/teste")
 def get_multas_amazonia_legal():  
-    UF = input("Digite a sigla da unidade de federação: ")
-    UF = UF.upper()
-    if UF in amazonia:
-      url = "https://dadosabertos.ibama.gov.br/dados/SICAFI/"+UF+"/Quantidade/multasDistribuidasBensTutelados.csv"
-      df = pd.read_csv(url, sep=';')
-      spreadsheet = service_account.open_by_key(spreadsheet_id) # "abrir" o arquivo
-      worksheet = spreadsheet.worksheet(UF) # escolhe uma aba
-      df = df.loc[df['Situação Débito'] == 'Para homologação/prazo de defesa']
-      df = df.loc[df['Tipo Auto'] == 'Multa']
-      # deletando colunas que não são necessárias na visualização
-      del df['Nº AI']
-      del df['Data Auto']
-      del df['Enquadramento Legal']
-      dados = df.groupby(['Município', 'Tipo Infração', 'Última Atualização Relatório']).size().to_frame(name = 'count').reset_index().sort_values(by=['count'],ascending=False)
-      worksheet.update([dados.columns.values.tolist()] + dados.values.tolist())
-    else:
-      print("Esta UF não pertence ao território da Amazônia Legal!")
-    return UF
+    return """
+        <h1>Multas na Amazônia Legal</h1>
+        <p>
+            <div class="flourish-embed flourish-chart" data-src="visualisation/8391891"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+        </p>
             """
