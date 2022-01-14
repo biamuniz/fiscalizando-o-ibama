@@ -21,3 +21,14 @@ def sobre():
             Esse site foi criado por <b>Bianca Muniz</b> como projeto final para obtenção da certificação em Jornalismo de Dados e Automação do Insper.
         </p>
             """
+
+@app.route("/teste")
+def teste():
+    return """
+        <h1>Teste</h1>
+        <a href="/sobre">Sobre esse site</a> - <a href="/">Página inicial</a>
+        <p>
+            Teste de visualização
+        </p>
+        <div class="flourish-embed flourish-chart" data-src="visualisation/8391891"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+            """
