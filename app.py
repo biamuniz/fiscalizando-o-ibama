@@ -1,6 +1,17 @@
 from flask import Flask
+import pandas as pd
 
 app = Flask(__name__)
+
+def dados_multas():
+    df = pd.read_csv("https://dadosabertos.ibama.gov.br/dados/SICAFI/RR/Quantidade/multasDistribuidasBensTutelados.csv", sep=';')
+    df = df.loc[df['Situação Débito'] == 'Para homologação/prazo de defesa']
+    df = df.loc[df['Tipo Auto'] == 'Multa']
+    del df['Nº AI']
+    del df['Data Auto']
+    del df['Enquadramento Legal']
+    dados = df.groupby(['Município', 'Tipo Infração', 'Última Atualização Relatório']).size().to_frame(name = 'count').reset_index().sort_values(by=['count'],ascending=False)
+    return dados
 
 @app.route("/")
 def hello_world():
@@ -32,3 +43,14 @@ def teste():
         </p>
         <div class="flourish-embed flourish-chart" data-src="visualisation/8391891"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
             """
+
+@app.route("/dados")
+def dados_multas():
+    dados = dados_multas()
+    return f"""
+    <h1>Multas no Pará</h1> 
+    <a href="/sobre">Sobre esse site</a>
+    <p> Dados
+        {dados}
+    </p>"""
+
