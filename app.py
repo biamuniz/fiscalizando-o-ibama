@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import pandas as pd
 
 app = Flask(__name__)
@@ -12,6 +12,7 @@ def dados_multas():
     del df['Enquadramento Legal']
     dados = df.groupby(['Município', 'Tipo Infração', 'Última Atualização Relatório']).size().to_frame(name = 'count').reset_index().sort_values(by=['count'],ascending=False)
     return dados
+ 
 
 @app.route("/")
 def hello_world():
@@ -22,6 +23,18 @@ def hello_world():
             Visualizando a quantidade de multas ambientais aplicadas no âmbito do Ibama que estão em <b>homologação ou prazo de defesa</b> nos estados que integram o território da Amazônia Legal.
         </p>
     """
+
+@app.route('/multas', methods = ['POST', 'GET']) 
+def multas(): 
+   if request.method == 'POST': 
+    UF = request.form['UF']  
+      return
+    """<body> 
+    <form action = "UF" method = "POST">
+        <p>Estado <input type = "text" name = "UF" /></p> 
+         <p><input type = "submit" value = "submit" /></p> 
+      </form>        
+   </body>"""
 
 @app.route("/sobre")
 def sobre():
