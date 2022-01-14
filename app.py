@@ -1,3 +1,4 @@
+import pandas as pd
 from flask import Flask
 
 app = Flask(__name__)
@@ -22,6 +23,20 @@ def sobre():
         </p>
             """
 
+@app.route("/amazonia")
+def get_multas():  
+    df = pd.read_csv("https://dadosabertos.ibama.gov.br/dados/SICAFI/RR/Quantidade/multasDistribuidasBensTutelados.csv", sep=';')
+    df = df.loc[df['Situação Débito'] == 'Para homologação/prazo de defesa']
+    df = df.loc[df['Tipo Auto'] == 'Multa']
+    # deletando colunas que não são necessárias na visualização
+    del df['Nº AI']
+    del df['Data Auto']
+    del df['Enquadramento Legal']
+    dados = df.groupby(['Município', 'Tipo Infração', 'Última Atualização Relatório']).size().to_frame(name = 'count').reset_index().sort_values(by=['count'],ascending=False)
+    return """<h1>Multas na Amazônia Legal</h1>"""
+    df
+    
+    
 @app.route("/teste")
 def get_multas_amazonia_legal():  
     return """
