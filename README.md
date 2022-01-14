@@ -10,7 +10,7 @@ Tendo em vista o desmonte sofrido pelo órgão e a urgência em se preocupar com
 ## Metodologia
 Fiz a leitura das planilhas de multas ambientais por bens tutelados, disponíveis no Portal de Dados Abertos do Ibama(), e análise usando a biblioteca `pandas`. Para a atualização automática da [planilha](https://docs.google.com/spreadsheets/d/1By5WRZLxlWEvh7I37tX1RUrh3XvA8FqWqC5gg_-ZiB0/edit?usp=sharing), foi utilizado o código descrito no [notebook](link). Nesta tarefa, utilizei a biblioteca `gspread`.
 
-Para as visualizações de dados, foi utilizada a ferramenta Flourish com dados importados automaticamente da planilha disponibilizada no Google Sheets. A cada cinco minutos, a ferramenta atualiza, obtendo os dados mais novos da planilha. **IMPORTANTE**: O Ibama atualiza diariamente os dados de multas ambientais aplicadas; logo, não se espera grandes modificações a cada solicitação.
+Para as visualizações de dados, foi utilizada a ferramenta Flourish com dados importados automaticamente da planilha disponibilizada no Google Sheets. A cada cinco minutos, a ferramenta atualiza, obtendo os dados mais novos da planilha. **IMPORTANTE**: O Ibama atualiza diariamente o relatório de multas ambientais aplicadas; logo, não se espera grandes modificações entre solicitações realizadas em períodos mais curtos.
 
 ---------------------------------------------------------------------------------------------------
 
