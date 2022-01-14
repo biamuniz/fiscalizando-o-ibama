@@ -28,7 +28,7 @@ def hello_world():
 def multas(): 
    if request.method == 'POST': 
     UF = request.form['UF']  
-      return
+    return
     """<body> 
     <form action = "UF" method = "POST">
         <p>Estado <input type = "text" name = "UF" /></p> 
