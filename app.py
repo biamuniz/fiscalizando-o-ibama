@@ -33,8 +33,7 @@ def get_multas():
     del df['Data Auto']
     del df['Enquadramento Legal']
     dados = df.groupby(['Município', 'Tipo Infração', 'Última Atualização Relatório']).size().to_frame(name = 'count').reset_index().sort_values(by=['count'],ascending=False)
-    return """<h1>Multas na Amazônia Legal</h1>"""
-    df
+    return df
     
     
 @app.route("/teste")
