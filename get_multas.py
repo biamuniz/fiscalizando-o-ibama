@@ -6,6 +6,7 @@ import ssl
 import gspread
 import requests
 
+ssl._create_default_https_context = ssl._create_unverified_context
 spreadsheet_id = os.environ["SPREADSHEET_ID"]
 conteudo_codificado = os.environ["GOOGLE_SHEETS_CREDENTIALS"]
 conteudo = base64.b64decode(conteudo_codificado)
