@@ -1,5 +1,6 @@
 import gspread
 from flask import Flask, render_template
+from get_multas_amazonia import dados_amazonia
 
 app = Flask(__name__)
 
@@ -66,5 +67,4 @@ def to():
 
 @app.route("/amazonia")
 def amazonia():
-    arquivo = open("templates/amazonia.html")
-    return arquivo.read()
+    return dados_amazonia
