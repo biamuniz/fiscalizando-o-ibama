@@ -66,4 +66,4 @@ def to():
 
 @app.route("/amazonia")
 def amazonia():
-  return dados_html
+  return dados_BR_html
