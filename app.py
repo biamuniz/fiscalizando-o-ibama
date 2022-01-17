@@ -1,9 +1,7 @@
 import gspread
 from flask import Flask, render_template
-from get_multas import dados_amazonia
 
 app = Flask(__name__)
-
 
 @app.route("/")
 def hello_world():
