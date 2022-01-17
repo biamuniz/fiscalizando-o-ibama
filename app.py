@@ -66,4 +66,5 @@ def to():
 
 @app.route("/amazonia")
 def amazonia():
-  return dados_html
+    arquivo = open("templates/amazonia.html")
+    return arquivo.read()
