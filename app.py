@@ -64,7 +64,3 @@ def rr():
 def to():
     arquivo = open("templates/multasto.html")
     return arquivo.read()
-
-@app.route("/amazonia")
-def amazonia():
-    return dados_amazonia
