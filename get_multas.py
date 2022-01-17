@@ -28,7 +28,7 @@ for UF in amazonia:
   dados = df.groupby(['Município', 'Tipo Infração', 'Última Atualização Relatório']).size().to_frame(name = 'count').reset_index().sort_values(by=['count'],ascending=False)
   worksheet.update([dados.columns.values.tolist()] + dados.values.tolist())
 
-  
+planilha = spreadsheet.worksheet("Amazonia")  
 AC = pd.read_csv("https://dadosabertos.ibama.gov.br/dados/SICAFI/AC/Quantidade/multasDistribuidasBensTutelados.csv", sep=';')
 AM = pd.read_csv("https://dadosabertos.ibama.gov.br/dados/SICAFI/AM/Quantidade/multasDistribuidasBensTutelados.csv", sep=';')
 AP = pd.read_csv("https://dadosabertos.ibama.gov.br/dados/SICAFI/AP/Quantidade/multasDistribuidasBensTutelados.csv", sep=';')
@@ -45,3 +45,6 @@ del aml['Nº AI']
 del aml['Data Auto']
 del aml['Enquadramento Legal']
 dadosaml = aml.groupby(['UF', 'Município', 'Tipo Infração', 'Última Atualização Relatório']).size().to_frame(name = 'count').reset_index().sort_values(by=['count'],ascending=False)
+planilha.update([dadosaml.columns.values.tolist()] + dadosaml.values.tolist())
+dados_amazonia = pd.DataFrame(planilha.get_all_records())
+dados_html = dados_amazonia.to_html()
