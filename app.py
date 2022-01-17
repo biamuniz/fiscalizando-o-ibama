@@ -1,6 +1,6 @@
 import gspread
 from flask import Flask, render_template
-from get_multas_amazonia import dados_amazonia
+from get_multas import dados_amazonia
 
 app = Flask(__name__)
 
